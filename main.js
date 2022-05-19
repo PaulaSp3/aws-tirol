@@ -80,17 +80,16 @@ let drawTemperature = function(geojson) {
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
             //L.marker(latlng).addTo(map);
-            //console.log(geoJsonPoint.geometry.coordinates)
+            //console.log(geoJsonPoint.properties.LT)
 
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
             (${geoJsonPoint.geometry.coordinates[2]} m)
             `;
 
             return L.marker(latlng, {
-                icon: L.icon({
-                    iconUrl: "icons/wifi.png",
-                    iconAnchor: [16, 37], //Verschieben des Icons dass Spitze richtig ist
-                    popupAnchor: [0, -37] //Verschieben des Popups, dass es nicht das Icon verdeckt
+                icon: L.divIcon({
+                    className: "aws-div-icon", 
+                    html: `<span>${geoJsonPoint.properties.LT}</span>`
                 })
             }).bindPopup(popup);
         }
