@@ -102,8 +102,18 @@ let drawTemperature = function(geojson) {
     }).addTo(overlays.temperature);
 }
 
+//Farben nach Wert und Schwellen ermitteln
+let getColor = function(value,ramp){
+    for(let rule of ramp) {
+        if(value >= rule.min && value < rule.max){
+            return rule.color;
+        }
+    }
+};
+console.log(getColor(-40,COLORS.temperature))
 // Layer beim Laden anzeigen
 overlays.temperature.addTo(map);
+
 
 // Wetterstationen
 async function loadData(url) {
