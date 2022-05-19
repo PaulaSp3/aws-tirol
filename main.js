@@ -139,7 +139,9 @@ let drawSnowheight = function(geojson) {
 let drawWind = function(geojson) {
     L.geoJSON(geojson, {
         filter: function(geoJsonPoint){
-            if(geoJsonPoint.properties.WG > 0 && geoJsonPoint.properties.WG < 1000){
+            if(geoJsonPoint.properties.WG > 0 && geoJsonPoint.properties.WG < 1000 &&
+                geoJsonPoint.properties.WR >=0 &&
+                geoJsonPoint.properties.WR <=360 ){
                 return true
             }
              
@@ -155,10 +157,11 @@ let drawWind = function(geojson) {
                 geoJsonPoint.properties.WG,
                 COLORS.wind
             );
+            let deg = geoJsonPoint.properties.WR;
             return L.marker(latlng, {
                 icon: L.divIcon({
                     className: "aws-div-icon", 
-                    html: `<span style="background-color: ${color}">${geoJsonPoint.properties.WG.toFixed(0)}</span>`
+                    html: `<span style="background-color: ${color}"><i class="fa-solid fa-circle-arrow-up" style = "transform: rotate(${deg}deg)"></i>${geoJsonPoint.properties.WG.toFixed(0)}</span>`
                 })
             }).bindPopup(popup);
         }
@@ -176,7 +179,7 @@ let getColor = function(value,ramp){
 };
 console.log(getColor(-40,COLORS.temperature))
 // Layer beim Laden anzeigen
-overlays.snowheight.addTo(map);
+overlays.wind.addTo(map);
 
 
 // Wetterstationen
