@@ -64,7 +64,6 @@ let drawStations = function(geojson) {
             (${geoJsonPoint.geometry.coordinates[2]} m)
             `;
 
-
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: "icons/wifi.png",
@@ -76,6 +75,28 @@ let drawStations = function(geojson) {
     }).addTo(overlays.stations);
 }
 
+//Temperature
+let drawTemperature = function(geojson) {
+    L.geoJSON(geojson, {
+        pointToLayer: function (geoJsonPoint, latlng) {
+            //L.marker(latlng).addTo(map);
+            //console.log(geoJsonPoint.geometry.coordinates)
+
+            let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
+            (${geoJsonPoint.geometry.coordinates[2]} m)
+            `;
+
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: "icons/wifi.png",
+                    iconAnchor: [16, 37], //Verschieben des Icons dass Spitze richtig ist
+                    popupAnchor: [0, -37] //Verschieben des Popups, dass es nicht das Icon verdeckt
+                })
+            }).bindPopup(popup);
+        }
+    }).addTo(overlays.temperature);
+}
+
 // Wetterstationslayer beim Laden anzeigen
 overlays.stations.addTo(map);
 
@@ -83,8 +104,9 @@ overlays.stations.addTo(map);
 async function loadData(url) {
     let response = await fetch(url);
     let geojson = await response.json();
+
     drawStations(geojson);
-    
+    drawTemperature(geojson);
     
 
 }
