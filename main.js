@@ -97,8 +97,8 @@ let drawTemperature = function(geojson) {
     }).addTo(overlays.temperature);
 }
 
-// Wetterstationslayer beim Laden anzeigen
-overlays.stations.addTo(map);
+// Layer beim Laden anzeigen
+overlays.temperature.addTo(map);
 
 // Wetterstationen
 async function loadData(url) {
