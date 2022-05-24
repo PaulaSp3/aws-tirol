@@ -205,7 +205,7 @@ let drawHumidity = function (geojson) {
     }).addTo(overlays.humidity);
 }
 
-L.control.rainviewer({ 
+L.control.rainviewer({
     position: 'bottomleft',
     nextButtonText: '>',
     playStopButtonText: 'Play/Stop',
