@@ -63,71 +63,105 @@ const COLORS = {
         min: 1,
         max: 10,
         color: "#ffffb2"
-    },{
+    }, {
         min: 10,
         max: 25,
         color: "#b0ffbc"
-    },{
+    }, {
         min: 25,
         max: 50,
         color: "#8cffff;"
-    },{
+    }, {
         min: 50,
         max: 100,
         color: "#19cdff"
-    },{
+    }, {
         min: 100,
         max: 200,
         color: "#1982ff"
-    },{
+    }, {
         min: 200,
         max: 300,
         color: "#0f5abe"
-    },{
+    }, {
         min: 300,
         max: 400,
         color: "#784bff"
-    },{
+    }, {
         min: 400,
         max: 3000,
         color: "#cd0feb"
-    }
-    ],
-    wind:[
-        {
+    }],
+    wind: [{
             min: 0,
-            max: 5, 
+            max: 5,
             color: "#ffff64"
         },
         {
             min: 5,
-            max: 10, 
+            max: 10,
             color: "#c8ff64"
         },
         {
             min: 10,
-            max: 20, 
+            max: 20,
             color: "#96ff96"
         },
         {
             min: 20,
-            max: 40, 
+            max: 40,
             color: "#32c8ff"
         },
         {
             min: 40,
-            max: 60, 
+            max: 60,
             color: "#6496ff"
         },
         {
             min: 60,
-            max: 80, 
+            max: 80,
             color: "#9664ff"
         },
         {
             min: 80,
-            max: 1000, 
+            max: 1000,
             color: "#ff3232"
         }
+    ],
+
+    humidity: [{
+            min: 0,
+            max: 30,
+            color: "#EEE"
+        }, {
+            min: 30,
+            max: 40,
+            color: "#DDD"
+        }, {
+            min: 40,
+            max: 50,
+            color: "#C6C9CE"
+        }, {
+            min: 50,
+            max: 60,
+            color: "#BBB"
+        }, {
+            min: 60,
+            max: 70,
+            color: "#AAC"
+        }, {
+            min: 70,
+            max: 80,
+            color: "#9998DD"
+        }, {
+            min: 80,
+            max: 90,
+            color: "#8788EE"
+        }, {
+            min: 90,
+            max: 101,
+            color: "#7677E1"
+        },
+
     ]
 }
