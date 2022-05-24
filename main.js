@@ -205,6 +205,16 @@ let drawHumidity = function (geojson) {
     }).addTo(overlays.humidity);
 }
 
+L.control.rainviewer({ 
+    position: 'bottomleft',
+    nextButtonText: '>',
+    playStopButtonText: 'Play/Stop',
+    prevButtonText: '<',
+    positionSliderLabelText: "Hour:",
+    opacitySliderLabelText: "Opacity:",
+    animationInterval: 500,
+    opacity: 0.5
+}).addTo(map)
 
 //Farben nach Wert und Schwellen ermitteln
 let getColor = function (value, ramp) {
