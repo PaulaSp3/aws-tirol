@@ -153,15 +153,16 @@ let drawWind = function (geojson) {
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
             (${geoJsonPoint.geometry.coordinates[2]} m)
             `;
+            let windKmh = geoJsonPoint.properties.WG * 3.6;
             let color = getColor(
-                geoJsonPoint.properties.WG,
+                windKmh,
                 COLORS.wind
             );
             let deg = geoJsonPoint.properties.WR;
             return L.marker(latlng, {
                 icon: L.divIcon({
                     className: "aws-div-icon",
-                    html: `<span style="background-color: ${color}"><i class="fa-solid fa-circle-arrow-up" style = "transform: rotate(${deg}deg)"></i>${geoJsonPoint.properties.WG.toFixed(0)}</span>`
+                    html: `<span style="background-color: ${color}"><i class="fa-solid fa-circle-arrow-up" style = "transform: rotate(${deg}deg)"></i>${windKmh.toFixed(0)}</span>`
                 })
             }).bindPopup(popup);
         }
