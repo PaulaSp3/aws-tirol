@@ -61,7 +61,8 @@ let drawStations = function (geojson) {
             //console.log(geoJsonPoint.geometry.coordinates)
 
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
-            (${geoJsonPoint.geometry.coordinates[2]} m)
+            (${geoJsonPoint.geometry.coordinates[2]} m) <br>
+            <a href="https://wiski.tirol.gv.at/lawine/grafiken/1100/standard/dreitage/${geoJsonPoint.properties.plot}.png">Grafik</a>
             `;
 
             return L.marker(latlng, {
@@ -89,7 +90,8 @@ let drawTemperature = function (geojson) {
             //console.log(geoJsonPoint.properties.LT)
 
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
-            (${geoJsonPoint.geometry.coordinates[2]} m)
+            (${geoJsonPoint.geometry.coordinates[2]} m)<br>
+            <a href="https://wiski.tirol.gv.at/lawine/grafiken/1100/standard/dreitage/${geoJsonPoint.properties.plot}.png">Grafik</a>
             `;
             let color = getColor(
                 geoJsonPoint.properties.LT,
@@ -119,7 +121,8 @@ let drawSnowheight = function (geojson) {
             //console.log(geoJsonPoint.properties.LT)
 
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
-            (${geoJsonPoint.geometry.coordinates[2]} m)
+            (${geoJsonPoint.geometry.coordinates[2]} m)<br>
+            <a href="https://wiski.tirol.gv.at/lawine/grafiken/1100/standard/dreitage/${geoJsonPoint.properties.plot}.png">Grafik</a>
             `;
             let color = getColor(
                 geoJsonPoint.properties.HS,
@@ -151,7 +154,8 @@ let drawWind = function (geojson) {
             //console.log(geoJsonPoint.properties.LT)
 
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
-            (${geoJsonPoint.geometry.coordinates[2]} m)
+            (${geoJsonPoint.geometry.coordinates[2]} m)<br>
+            <a href="https://wiski.tirol.gv.at/lawine/grafiken/1100/standard/dreitage/${geoJsonPoint.properties.plot}.png">Grafik</a>
             `;
             let windKmh = geoJsonPoint.properties.WG * 3.6;
             let color = getColor(
@@ -183,7 +187,8 @@ let drawHumidity = function (geojson) {
             //console.log(geoJsonPoint.properties.LT)
 
             let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
-            (${geoJsonPoint.geometry.coordinates[2]} m)
+            (${geoJsonPoint.geometry.coordinates[2]} m)<br>
+            <a href="https://wiski.tirol.gv.at/lawine/grafiken/1100/standard/dreitage/${geoJsonPoint.properties.plot}.png">Grafik</a>
             `;
             let color = getColor(
                 geoJsonPoint.properties.RH,
