@@ -168,6 +168,37 @@ let drawWind = function(geojson) {
     }).addTo(overlays.wind);
 }
 
+let drawHumidity = function(geojson) {
+    L.geoJSON(geojson, {
+        filter: function(geoJsonPoint){
+            if(geoJsonPoint.properties.RH >= 0 && geoJsonPoint.properties.WG < 1000 &&
+                geoJsonPoint.properties.RH <= 100 ){
+                return true
+            }
+             
+        },
+        pointToLayer: function (geoJsonPoint, latlng) {
+            //L.marker(latlng).addTo(map);
+            //console.log(geoJsonPoint.properties.LT)
+
+            let popup = `<strong> ${geoJsonPoint.properties.name} </strong>
+            (${geoJsonPoint.geometry.coordinates[2]} m)
+            `;
+            let color = getColor(
+                geoJsonPoint.properties.RH,
+                COLORS.humidity
+            );
+            let deg = geoJsonPoint.properties.RH;
+            return L.marker(latlng, {
+                icon: L.divIcon({
+                    className: "aws-div-icon", 
+                    html: `<span style="background-color: ${color}">${geoJsonPoint.properties.RH.toFixed(0)}</span>`
+                })
+            }).bindPopup(popup);
+        }
+    }).addTo(overlays.humidity);
+}
+
 
 //Farben nach Wert und Schwellen ermitteln
 let getColor = function(value,ramp){
@@ -191,6 +222,7 @@ async function loadData(url) {
     drawTemperature(geojson);
     drawSnowheight(geojson);
     drawWind(geojson);
+    drawHumidity(geojson);
 
 }
 loadData("https://static.avalanche.report/weather_stations/stations.geojson");
